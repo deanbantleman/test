@@ -1,0 +1,76 @@
+# 1. See Git Status
+git status
+
+#2. Add files to Github
+git add .
+
+#3. Commit files with a comment (Commit to local repository)
+git commit -m "Add git command to 'Git Commands.txt'"
+
+#4. Push files to the Master (Remote - Bitbucket)
+git push origin master
+
+#5. Check the status
+git status
+
+#6. Check git log
+git log --decorate
+
+#7. List tags
+git tag
+
+#8. Create tag
+git tag -a "live_v0.0.9" -m "Testing tags"
+
+#9. Push tags to remote
+git push origin --follow-tags
+
+#10. Delete tag
+git tag -d "live_v0.0.9"
+
+#11. Push deleted tag to git
+git push origin :live_v0.0.9
+
+## Using tags
+## A tag can only point to one commit
+## Steps in order to use tags, 2, 3, 8, 9
+
+#12. Remove file from Git and cache
+git rm --cached Production/terraform.tfvars
+# Steps to run, 12, 3, 4
+
+#13. Create a git branch
+git branch test
+
+#14. Push to new branch
+git push origin test
+NOTE: after initial push you can just type "git push"
+
+#15. Change branch
+git checkout master
+
+#16. Merge branch with master
+git merge test -m "Merging test with master branch"
+NOTE: You should do this by being in the master branch
+
+## Working with tags
+# Create a new branch from tag v1.1
+git checkout -b newbranch v1.1
+
+# Do some work and commit it
+
+# Create a new tag from your work
+git tag -a -m "Tag version 1.1.1, a bugfix release" v1.1.1
+
+# If .gitignore isn't ignoring files
+# Add files you want one by one e.g
+git add main.tf
+# Commit the files
+git commit -m "Updated the Staging module for VPC creation"
+# Clear the git cache
+git rm -r --cached
+# Run a git status and the files will now be ignored
+git status
+
+# Tag a specific existing commit
+git tag -a v0.0.14 477cb65 -m "Most current staging VPC module"
